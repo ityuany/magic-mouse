@@ -61,15 +61,20 @@ class AppDelegate: NSObject {
     @objc func openSettings() {
         if settingsWindow == nil {
             let contentView = NSHostingView(rootView: SettingsView())
+            
             settingsWindow = NSWindow(
-                contentRect: NSRect(x: 300, y: 100, width: 800, height: 600),
+                contentRect: NSRect(x: 100, y: 100, width: 800, height: 600),
                 styleMask: [.titled, .closable, .miniaturizable, .resizable],
                 backing: .buffered,
                 defer: false
             )
-            settingsWindow?.title = "Settings"
+            settingsWindow?.title = "设置"
             settingsWindow?.contentView = contentView
+            settingsWindow?.minSize = NSSize(width: 800, height: 600)
+            settingsWindow?.maxSize = NSSize(width: 800, height: 600)
         }
+        
+        settingsWindow?.setFrame(NSRect(x: 100, y: 100, width: 800, height: 600), display: true)
         settingsWindow?.makeKeyAndOrderFront(nil)
     }
 }
